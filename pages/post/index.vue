@@ -7,6 +7,7 @@
         <ul>
           <li class="listLfet">
             热门城市
+            <i class="iconfont icon-youjianhao"></i>
             <div class="listRightHote">
               <ul>
                 <li>
@@ -49,6 +50,7 @@
           </li>
           <li class="listLfet">
             推荐城市
+            <i class="iconfont icon-youjianhao"></i>
             <div class="listRightHote">
               <ul>
                 <li>
@@ -91,6 +93,7 @@
           </li>
           <li class="listLfet">
             奔向海岛
+            <i class="iconfont icon-youjianhao"></i>
             <div class="listRightHote">
               <ul>
                 <li>
@@ -133,6 +136,7 @@
           </li>
           <li class="listLfet">
             主题推荐
+            <i class="iconfont icon-youjianhao"></i>
             <div class="listRightHote">
               <ul>
                 <li>
@@ -302,7 +306,7 @@ export default {
     .listRightHote {
       position: absolute;
       top: -1px;
-      left: 259px;
+      left: 260px;
       border: 1px solid #ddd;
       z-index: 2;
       width: 350px;
@@ -311,7 +315,6 @@ export default {
       ul {
         padding: 0px 14px;
         line-height: 38px;
-
         li {
           i {
             font-size: 22px;
@@ -322,29 +325,30 @@ export default {
             color: #ffa600;
             font-weight: 400;
             margin: 0 8px;
-            &:hover {
-              text-decoration: underline;
-            }
           }
           span {
             font-size: 14px;
             color: #bfbfbf;
-            &:hover {
-              text-decoration: underline;
-            }
           }
         }
       }
     }
     .list {
       li.listLfet {
+        background-color: #fff;
         padding: 10px 0;
         text-indent: 1em;
         font-size: 14px;
         border: 1px solid #ddd;
         border-top: none;
         position: relative;
-
+        //margin负值解决边界重合变粗
+        margin-right: -1px;
+        z-index: 3;
+        i {
+          position: absolute;
+          right: 6px;
+        }
         &:nth-child(1) {
           border-top: 1px solid #ddd;
         }
@@ -352,7 +356,8 @@ export default {
         &:nth-child(2):hover,
         &:nth-child(3):hover,
         &:nth-child(4):hover {
-          border-right: none;
+          border-right: 1px solid #ffffff;
+          color: #ffa600;
         }
         &:nth-child(1):hover .listRightHote {
           display: block;
@@ -361,32 +366,16 @@ export default {
           display: block;
           position: absolute;
           top: -41px;
-          left: 259px;
         }
         &:nth-child(3):hover .listRightHote {
           display: block;
           position: absolute;
           top: -81px;
-          left: 259px;
         }
         &:nth-child(4):hover .listRightHote {
           display: block;
           position: absolute;
           top: -121px;
-          left: 259px;
-        }
-
-        &::after {
-          display: block;
-          content: "";
-          width: 10px;
-          height: 10px;
-          border-right: 1px solid #999;
-          border-top: 1px solid #999;
-          transform: rotate(45deg);
-          position: absolute;
-          right: 17px;
-          top: 14px;
         }
       }
     }
