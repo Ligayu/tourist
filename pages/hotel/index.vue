@@ -192,7 +192,12 @@
     </el-form>
 
     <!-- 酒店详情内容 -->
-    <div class="hotelContent" v-for="(item,index) in hotelsChange" :key="index">
+    <div
+      class="hotelContent"
+      v-for="(item,index) in hotelsChange"
+      :key="index"
+      @click="$router.push('/hotel/'+item.id)"
+    >
       <div class="hotelImg" :style="`background:url(${item.photos})`"></div>
       <div class="hotelDetail">
         <div class="hotelTitle">
