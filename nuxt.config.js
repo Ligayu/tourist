@@ -16,6 +16,9 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', type: 'text/css', href: '//at.alicdn.com/t/font_1168872_ehvuah8v57g.css' } // 新增全局字体样式
+    ],
+    script: [
+      { src: 'https://webapi.amap.com/maps?v=1.4.15&key=61924875e77a856007797dfeeed32c09' }
     ]
   },
 
@@ -54,8 +57,8 @@ export default {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    // baseURL: "http://157.122.54.189:9095" // 新增备用地址
-    baseURL: "http://127.0.0.1:1337" // 新增axios默认请求路径 		  
+    baseURL: "http://157.122.54.189:9095" // 新增备用地址
+    // baseURL: "http://127.0.0.1:1337" // 新增axios默认请求路径 		  
   },
 
   /*

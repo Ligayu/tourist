@@ -12,12 +12,13 @@ import PageFooter from "@/components/PageFooter";
 export default {
   components: {
     PageFooter,
-    PageHeader
-  }
+    PageHeader,
+  },
 };
 </script>
 
 <style lang="less">
+@import url("http://at.alicdn.com/t/font_1966299_0hsry38qj9fv.css");
 html {
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;

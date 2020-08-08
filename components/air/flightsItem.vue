@@ -62,16 +62,16 @@
 export default {
   data() {
     return {
-      isShow: false
+      isShow: false,
     };
   },
   props: {
     // 数据
     data: {
       type: Object,
-      // 默认是空数组
-      default: {}
-    }
+      // 默认是空对象
+      default: {},
+    },
   },
   computed: {
     subTime() {
@@ -89,7 +89,7 @@ export default {
       }
       // 得到相差时间
       return `${Math.floor(dis / 60)}时${dis % 60}分`;
-    }
+    },
   },
   methods: {
     // toggleShow() {
@@ -100,11 +100,11 @@ export default {
         path: "/air/order",
         query: {
           id,
-          seat_xid
-        }
+          seat_xid,
+        },
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -57,48 +57,51 @@ export default {
       flightsData: {
         flights: [],
         info: {},
-        options: {}
+        options: {},
       }, // 航班总数据
-      cacheFlightsList: [],
+      cacheFlightsList: [], //缓存机票信息列表
       // dataList: [], // 航班列表数据，用于循环flightsItem组件，单独出来是因为要分页
       pageIndex: 1, // 当前页数
-      pageSize: 10 // 显示条数
+      pageSize: 10, // 显示条数
     };
   },
   components: {
     FlightsListHead,
     FlightsItem,
     FlightsFilters,
-    FlightsAside
+    FlightsAside,
   },
   mounted() {
     this.getData();
   },
   computed: {
     dataList() {
+      //当子组件传回来的新数组使this.flightsData发生改变，dataList自动变化
+      //跟cacheFlightsList数据差不多，都是机票信息列表，但这个需要裁剪，用来分页
       const start = (this.pageIndex - 1) * this.pageSize;
       const end = start + this.pageSize;
       return this.flightsData.flights.slice(start, end);
-    }
+    },
   },
   watch: {
     $route() {
       //从历史页传过来的？后的数据
       this.getData();
-    }
+    },
   },
   methods: {
     getData() {
       this.$axios({
         url: "/airs",
-        params: this.$route.query //nuxt-link的跳转方式也是使用this.$route.query或this.$route.params获取
-      }).then(res => {
+        params: this.$route.query, //nuxt-link的跳转方式也是使用this.$route.query或this.$route.params获取
+      }).then((res) => {
         this.flightsData = res.data;
         this.cacheFlightsList = res.data.flights;
         console.log(this.flightsData);
       });
     },
     filterList(newList) {
+      //从子组件传出newList，重新渲染机票页面
       this.flightsData.flights = newList;
     },
     handleSizeChange(pageSize) {
@@ -106,8 +109,8 @@ export default {
     },
     handleCurrentChange(currentPage) {
       this.pageIndex = currentPage;
-    }
-  }
+    },
+  },
 };
 </script>
 

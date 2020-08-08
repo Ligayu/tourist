@@ -9,6 +9,9 @@
       </el-col>
       <el-col :span="4">
         <el-select size="mini" v-model="airport" placeholder="起飞机场" @change="filterMachine">
+          <!-- value 选项的值 -->
+          <!-- label 选项的标签 -->
+          <!-- el-option中选中的值会赋值给el-select 中v-model的data变量 -->
           <el-option
             v-for="(item,index) in options.airport"
             :key="index"
@@ -60,7 +63,7 @@ export default {
   props: {
     options: Object,
     tranFlights: Array,
-    info: Object
+    info: Object,
   },
   data() {
     return {
@@ -71,29 +74,30 @@ export default {
       sizeList: [
         {
           name: "大",
-          En: "L"
+          En: "L",
         },
         {
           name: "中",
-          En: "M"
+          En: "M",
         },
         {
           name: "小",
-          En: "S"
-        }
-      ]
+          En: "S",
+        },
+      ],
     };
   },
   methods: {
+    //筛选航班信息
     filterMachine() {
       let newList = this.tranFlights;
       if (this.airport) {
-        newList = newList.filter(item => {
+        newList = newList.filter((item) => {
           return item.org_airport_name == this.airport;
         });
       }
       if (this.flightTimes) {
-        newList = newList.filter(item => {
+        newList = newList.filter((item) => {
           let depTime = item.dep_time.split(":")[0];
           let startHour = this.flightTimes.split(",")[0];
           let endHour = this.flightTimes.split(",")[1];
@@ -101,12 +105,12 @@ export default {
         });
       }
       if (this.company) {
-        newList = newList.filter(item => {
+        newList = newList.filter((item) => {
           return item.airline_name == this.company;
         });
       }
       if (this.airSize) {
-        newList = newList.filter(item => {
+        newList = newList.filter((item) => {
           return item.plane_size == this.airSize;
         });
       }
@@ -116,8 +120,8 @@ export default {
     },
     handleFiltersCancel() {
       console.log(d);
-    }
-  }
+    },
+  },
   // 选择机场时候触发
   // handleAirport(value) {
   //   //   this.$emit("transFilter", value);
